@@ -27,61 +27,44 @@ Before you can run this project, ensure you have the following installed:
    ```bash
    git clone https://github.com/yashcodes224/image-similarity-search.git
    cd image-similarity-search
-Install the required dependencies:
+# Install the required dependencies:
+- npm i weaviate-ts-client
+- Pull the weaviate DB instance image & ResNet model from Docker by creating a docker-compose.yml (which will contain the model info)
 
-bash
-Copy code
-npm install
-Ensure Weaviate is running locally. You can use Docker to start Weaviate with the img2vec-neural module:
-
-bash
-Copy code
-docker run -d -p 8080:8080 semitechnologies/weaviate:latest \
-    --module img2vec-neural \
-    --enable-modules img2vec-neural
-Add your images to the ./img directory.
-
-Usage
-Run the script to create the schema, add data, and perform a similarity search:
-
-bash
-Copy code
-node index.js
-The script will:
-
-Create a schema for storing memes in Weaviate.
-Read and store an image (e.g., dog1.jpg) along with some text metadata.
-Perform a similarity search with another image (test.jpeg).
-Write the most similar image found in Weaviate to result.jpg.
-Check the result.jpg file in the root directory to see the result of the similarity search.
-
-Project Structure
-index.js: The main script that handles schema creation, data insertion, and image similarity search.
-./img: Directory to store images for the project.
-./result.jpg: The result image from the similarity search.
-Example Output
+# Project Structure
+- index.js: The main script that handles schema creation, data insertion, and image similarity search.
+- ./img: Directory to store images for the project.
+- ./result.jpg: The result image from the similarity search.
+# Example Output
 After running the script, you'll have a new image file (result.jpg) that is visually similar to the input image (test.jpeg). This output demonstrates the effectiveness of vector-based similarity search using Weaviate.
 
-Troubleshooting
-Weaviate Connection Issues: Ensure that Weaviate is running and accessible at localhost:8080. If you're running it on a different host or port, update the host in the Weaviate client configuration.
-Module Errors: Make sure the img2vec-neural module is enabled in your Weaviate instance. Check the Weaviate logs for any errors related to module loading.
-Contributing
-Contributions are welcome! Please open an issue or submit a pull request if you have any ideas or improvements.
+# Benefits of Using Weaviate with the img2vec-neural Module
 
-Benefits in Production
-Efficient Image Search: Using Weaviate with the img2vec-neural module allows you to efficiently search for similar images by leveraging vectorization and approximate nearest neighbor (ANN) search algorithms. This is particularly useful in applications like image recommendation systems, content moderation, and media asset management.
+## 1. Production-Efficient Image Search
+Leveraging Weaviate with the img2vec-neural module enables efficient image similarity searches by using vectorization and approximate nearest neighbor (ANN) search algorithms. This capability is especially beneficial for applications like:
 
-Scalable Vector Search: The use of HNSW for vector indexing ensures that the search remains fast even as the dataset grows. This scalability is crucial for production environments with large amounts of data.
+- Image recommendation systems
+- Content moderation
+- Media asset management
 
-Integration Flexibility: By using API calls through the Weaviate client, this approach allows you to integrate image similarity search capabilities into various applications, regardless of where Weaviate is hosted (locally or in the cloud).
+## 2. Scalable Vector Search
+The use of Hierarchical Navigable Small World (HNSW) for vector indexing ensures that searches remain fast even as the dataset grows. This scalability is critical in production environments with large amounts of data.
 
-Modularity: The separation of concerns (image vectorization, storage, search) within Weaviate makes the system modular and easier to maintain and extend in production. For instance, if a new image vectorization method becomes available, it can be swapped in without major changes to the overall system.
+## 3. Integration Flexibility
+Through API calls via the Weaviate client, this approach allows for the integration of image similarity search capabilities into various applications, regardless of whether Weaviate is hosted locally or in the cloud.
 
-Local Development and Testing: Running Weaviate locally allows for rapid development and testing. Once the system is verified locally, it can be deployed to production with minimal changes.
+## 4. Modularity
+Weaviate's architecture, which separates concerns such as image vectorization, storage, and search, enhances the system’s modularity. This makes the system easier to maintain and extend in production. For example, if a new image vectorization method becomes available, it can be easily swapped in without major changes to the overall system.
+
+## 5. Local Development and Testing
+Running Weaviate locally supports rapid development and testing. Once the system is verified locally, it can be deployed to production with minimal changes.
+
 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Acknowledgments
-Weaviate - The open-source vector search engine that powers this project.
-ResNet - The deep learning model behind the img2vec-neural module.
+## Acknowledgments
+- **Weaviate** - The open-source vector search engine that powers this project.
+- **ResNet** - The deep learning model behind the img2vec-neural module.
+
+## Contributions are welcome! Please open an issue or submit a pull request if you have any ideas or improvements.
