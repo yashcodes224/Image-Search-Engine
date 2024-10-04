@@ -20,6 +20,10 @@ Before you can run this project, ensure you have the following installed:
 - [Docker](https://www.docker.com/) (if you want to run Weaviate via Docker)
 - [weaviate-ts-client](https://www.npmjs.com/package/weaviate-ts-client) (installed via npm)
 
+## Live Working Video Link :-
+
+**Link** :- https://drive.google.com/file/d/16Gjk-EqNY7nvnseq3l4jOKQjUu7afH6y/view?usp=sharing
+
 ## Installation
 
 1. Clone the repository:
